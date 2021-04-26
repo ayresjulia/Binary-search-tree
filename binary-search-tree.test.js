@@ -105,35 +105,33 @@ describe("dfsPreOrder", function () {
 	});
 });
 
-// describe("dfsInOrder", function() {
-//   it("returns an array of values found with DFS In Order", function() {
-//     let binarySearchTree = new BinarySearchTree();
-//     binarySearchTree
-//       .insert(15)
-//       .insert(20)
-//       .insert(10)
-//       .insert(12)
-//       .insert(1)
-//       .insert(5)
-//       .insert(50);
-//     expect(binarySearchTree.dfsInOrder()).toEqual([1, 5, 10, 12, 15, 20, 50]);
-//   });
-// });
+describe("dfsInOrder", function () {
+	it("returns an array of values found with DFS In Order", function () {
+		let binarySearchTree = new BinarySearchTree();
+		binarySearchTree.insert(15);
+		binarySearchTree.insert(20);
+		binarySearchTree.insert(10);
+		binarySearchTree.insert(12);
+		binarySearchTree.insert(1);
+		binarySearchTree.insert(5);
+		binarySearchTree.insert(50);
+		expect(binarySearchTree.dfsInOrder()).toEqual([ 1, 5, 10, 12, 15, 20, 50 ]);
+	});
+});
 
-// describe("dfsPostOrder", function() {
-//   it("returns an array of values found with DFS Post Order", function() {
-//     let binarySearchTree = new BinarySearchTree();
-//     binarySearchTree
-//       .insert(15)
-//       .insert(20)
-//       .insert(10)
-//       .insert(12)
-//       .insert(1)
-//       .insert(5)
-//       .insert(50);
-//     expect(binarySearchTree.dfsPostOrder()).toEqual([5, 1, 12, 10, 50, 20, 15]);
-//   });
-// });
+describe("dfsPostOrder", function () {
+	it("returns an array of values found with DFS Post Order", function () {
+		let binarySearchTree = new BinarySearchTree();
+		binarySearchTree.insert(15);
+		binarySearchTree.insert(20);
+		binarySearchTree.insert(10);
+		binarySearchTree.insert(12);
+		binarySearchTree.insert(1);
+		binarySearchTree.insert(5);
+		binarySearchTree.insert(50);
+		expect(binarySearchTree.dfsPostOrder()).toEqual([ 5, 1, 12, 10, 50, 20, 15 ]);
+	});
+});
 
 // describe("BFS", function() {
 //   it("should return the correct output", function() {

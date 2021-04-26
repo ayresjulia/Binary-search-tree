@@ -104,9 +104,9 @@ class BinarySearchTree {
 		let current = this.root;
 
 		function traverse (node) {
-			data.push(node.val); // visit
-			node.left && traverse(node.left); // go left if there's a left
-			node.right && traverse(node.right); // go right if there's a right
+			data.push(node.val);
+			node.left && traverse(node.left);
+			node.right && traverse(node.right);
 		}
 
 		traverse(current);
@@ -116,12 +116,36 @@ class BinarySearchTree {
 	/** dfsInOrder(): Traverse the array using in-order DFS.
    * Return an array of visited nodes. */
 
-	// dfsInOrder () {}
+	dfsInOrder () {
+		let data = [];
+		let current = this.root;
+
+		function traverse (node) {
+			node.left && traverse(node.left);
+			data.push(node.val);
+			node.right && traverse(node.right);
+		}
+
+		traverse(current);
+		return data;
+	}
 
 	/** dfsPostOrder(): Traverse the array using post-order DFS.
    * Return an array of visited nodes. */
 
-	// dfsPostOrder () {}
+	dfsPostOrder () {
+		let data = [];
+		let current = this.root;
+
+		function traverse (node) {
+			node.left && traverse(node.left);
+			node.right && traverse(node.right);
+			data.push(node.val);
+		}
+
+		traverse(current);
+		return data;
+	}
 
 	/** bfs(): Traverse the array using BFS.
    * Return an array of visited nodes. */
