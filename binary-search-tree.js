@@ -150,24 +150,22 @@ class BinarySearchTree {
 	/** bfs(): Traverse the array using BFS.
    * Return an array of visited nodes. */
 
-	// bfs () {}
+	bfs () {
+		let queue = [ this.root ];
+		let data = [];
 
-	/** Further Study!
-   * remove(val): Removes a node in the BST with the value val.
-   * Returns the removed node. */
-
-	// remove (val) {}
-
-	/** Further Study!
-   * isBalanced(): Returns true if the BST is balanced, false otherwise. */
-
-	// isBalanced () {}
-
-	/** Further Study!
-   * findSecondHighest(): Find the second highest value in the BST, if it exists.
-   * Otherwise return undefined. */
-
-	// findSecondHighest () {}
+		while (queue.length) {
+			let current = queue.shift();
+			data.push(current.val);
+			if (current.left) {
+				queue.push(current.left);
+			}
+			if (current.right) {
+				queue.push(current.right);
+			}
+		}
+		return data;
+	}
 }
 
 module.exports = BinarySearchTree;
