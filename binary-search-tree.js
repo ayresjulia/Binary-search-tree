@@ -62,7 +62,19 @@ class BinarySearchTree {
 	/** find(val): search the tree for a node with value val.
    * return the node, if found; else undefined. Uses iteration. */
 
-	// find (val) {}
+	find (val) {
+		if (!this.root) return undefined;
+
+		let currentNode = this.root;
+		while (currentNode) {
+			if (currentNode.val === val) return currentNode;
+			if (currentNode.val > val) {
+				currentNode = currentNode.left;
+			} else {
+				currentNode = currentNode.right;
+			}
+		}
+	}
 
 	/** findRecursively(val): search the tree for a node with value val.
    * return the node, if found; else undefined. Uses recursion. */
@@ -110,14 +122,14 @@ class BinarySearchTree {
 module.exports = BinarySearchTree;
 
 // let binarySearchTree = new BinarySearchTree();
-// console.log(binarySearchTree);
+// // console.log(binarySearchTree);
 
 // binarySearchTree.insert(15);
 // binarySearchTree.insert(20);
 // binarySearchTree.insert(10);
 // binarySearchTree.insert(12);
-// console.log(binarySearchTree.root.val); // 15
-// console.log(binarySearchTree.root.right.value); // 20
-// console.log(binarySearchTree.root.left.right.value); // 12
+// // console.log(binarySearchTree.root.val); // 15
+// // console.log(binarySearchTree.root.right.value); // 20
+// // console.log(binarySearchTree.root.left.right.value); // 12
 
-// console.log(binarySearchTree);
+// console.log(binarySearchTree.find(10));
