@@ -21,8 +21,6 @@ class BinarySearchTree {
 			return this;
 		}
 		let currentNode = this.root;
-		// console.log("currentNode", currentNode);
-		// console.log("THIS", this.root.val);
 		if (val < currentNode.val && currentNode.left) {
 			currentNode = currentNode.left;
 		} else if (val < currentNode.val) {
@@ -40,7 +38,26 @@ class BinarySearchTree {
 	/** insertRecursively(val): insert a new node into the BST with value val.
    * Returns the tree. Uses recursion. */
 
-	// insertRecursively (val) {}
+	insertRecursively (val, currentNode = this.root) {
+		if (!this.root) {
+			let newNode = new Node(val);
+			this.root = newNode;
+			return this;
+		}
+
+		if (val < currentNode.val && !currentNode.left) {
+			currentNode.left = new Node(val);
+			return this;
+		} else if (val < currentNode.val) {
+			return this.insertRecursively(val, currentNode.left);
+		}
+		if (val > currentNode.val && !currentNode.right) {
+			currentNode.right = new Node(val);
+			return this;
+		} else if (val > currentNode.val) {
+			return this.insertRecursively(val, currentNode.right);
+		}
+	}
 
 	/** find(val): search the tree for a node with value val.
    * return the node, if found; else undefined. Uses iteration. */
