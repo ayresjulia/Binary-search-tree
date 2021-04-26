@@ -15,23 +15,27 @@ class BinarySearchTree {
    * Returns the tree. Uses iteration. */
 
 	insert (val) {
-		if (!this.root) {
-			let newNode = new Node(val);
-			this.root = newNode;
+		if (this.root === null) {
+			this.root = new Node(val);
 			return this;
 		}
-		let currentNode = this.root;
-		if (val < currentNode.val && currentNode.left) {
-			currentNode = currentNode.left;
-		} else if (val < currentNode.val) {
-			currentNode.left = new Node(val);
-			return currentNode;
-		}
-		if (val > currentNode.val && currentNode.right) {
-			currentNode = currentNode.right;
-		} else if (val > currentNode.val) {
-			currentNode.right = new Node(val);
-			return currentNode;
+		let current = this.root;
+		while (true) {
+			if (val < current.val) {
+				if (current.left === null) {
+					current.left = new Node(val);
+					return this;
+				} else {
+					current = current.left;
+				}
+			} else if (val > current.val) {
+				if (current.right === null) {
+					current.right = new Node(val);
+					return this;
+				} else {
+					current = current.right;
+				}
+			}
 		}
 	}
 
@@ -95,7 +99,19 @@ class BinarySearchTree {
 	/** dfsPreOrder(): Traverse the array using pre-order DFS.
    * Return an array of visited nodes. */
 
-	// dfsPreOrder () {}
+	dfsPreOrder () {
+		let data = [];
+		let current = this.root;
+
+		function traverse (node) {
+			data.push(node.val); // visit
+			node.left && traverse(node.left); // go left if there's a left
+			node.right && traverse(node.right); // go right if there's a right
+		}
+
+		traverse(current);
+		return data;
+	}
 
 	/** dfsInOrder(): Traverse the array using in-order DFS.
    * Return an array of visited nodes. */
@@ -131,16 +147,3 @@ class BinarySearchTree {
 }
 
 module.exports = BinarySearchTree;
-
-// let binarySearchTree = new BinarySearchTree();
-// // console.log(binarySearchTree);
-
-// binarySearchTree.insert(15);
-// binarySearchTree.insert(20);
-// binarySearchTree.insert(10);
-// binarySearchTree.insert(12);
-// // console.log(binarySearchTree.root.val); // 15
-// // console.log(binarySearchTree.root.right.value); // 20
-// // console.log(binarySearchTree.root.left.right.value); // 12
-
-// console.log(binarySearchTree.find(10));
